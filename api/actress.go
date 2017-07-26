@@ -2,9 +2,10 @@ package api
 
 import (
 	"fmt"
-	"github.com/mitchellh/mapstructure"
 	"net/url"
 	"strconv"
+
+	"github.com/mitchellh/mapstructure"
 )
 
 const (
@@ -23,10 +24,20 @@ type ActressService struct {
 	Initial     string `mapstructure:"initial"`
 	Keyword     string `mapstructure:"keyword"`
 	Bust        string `mapstructure:"bust"`
+	GteBust     string `mapstructure:"gte_bust"`
+	LteBust     string `mapstructure:"lte_bust"`
 	Waist       string `mapstructure:"waist"`
+	GteWaist    string `mapstructure:"gte_waist"`
+	LteWaist    string `mapstructure:"lte_waist"`
 	Hip         string `mapstructure:"hip"`
+	GteHip      string `mapstructure:"gte_hip"`
+	LteHip      string `mapstructure:"lte_hip"`
 	Height      string `mapstructure:"height"`
+	GteHeight   string `mapstructure:"gte_height"`
+	LteHeight   string `mapstructure:"lte_height"`
 	Birthday    string `mapstructure:"birthday"`
+	GteBirthday string `mapstructure:"gte_birthday"`
+	LteBirthday string `mapstructure:"lte_birthday"`
 }
 
 type ActressRawResponse struct {
@@ -46,11 +57,21 @@ type Actress struct {
 	Name        string             `mapstructure:"name"`
 	Ruby        string             `mapstructure:"ruby"`
 	Bust        string             `mapstructure:"bust"`
+	GteBust     string             `mapstructure:"gte_bust"`
+	LteBust     string             `mapstructure:"lte_bust"`
 	Cup         string             `mapstructure:"cup"`
 	Waist       string             `mapstructure:"waist"`
+	GteWaist    string             `mapstructure:"gte_waist"`
+	LteWaist    string             `mapstructure:"lte_waist"`
 	Hip         string             `mapstructure:"hip"`
+	GteHip      string             `mapstructure:"gte_hip"`
+	LteHip      string             `mapstructure:"lte_hip"`
 	Height      string             `mapstructure:"height"`
+	GteHeight   string             `mapstructure:"gte_height"`
+	LteHeight   string             `mapstructure:"lte_height"`
 	Birthday    string             `mapstructure:"birthday"`
+	GteBirthday string             `mapstructure:"gte_birthday"`
+	LteBirthday string             `mapstructure:"lte_birthday"`
 	BloodType   string             `mapstructure:"blood_type"`
 	Hobby       string             `mapstructure:"hobby"`
 	Prefectures string             `mapstructure:"prefectures"`
@@ -78,10 +99,20 @@ func NewActressService(affiliateID, apiID string) *ActressService {
 		Initial:     "",
 		Keyword:     "",
 		Bust:        "",
+		GteBust:     "",
+		LteBust:     "",
 		Waist:       "",
+		GteWaist:    "",
+		LteWaist:    "",
 		Hip:         "",
+		GteHip:      "",
+		LteHip:      "",
 		Height:      "",
+		GteHeight:   "",
+		LteHeight:   "",
 		Birthday:    "",
+		GteBirthday: "",
+		LteBirthday: "",
 	}
 }
 
@@ -175,11 +206,47 @@ func (srv *ActressService) SetBirthday(birthday string) *ActressService {
 	return srv
 }
 
+// SetGteBirthday sets the specified argument to ActressService.GteBirthday.
+//  format YYYYMMDD
+//  e.g. 19990101
+//
+// SetGteBirthdayはBirthdayパラメータに女優の誕生日の開始値を設定します。
+func (srv *ActressService) SetGteBirthday(gteBirthday string) *ActressService {
+	srv.GteBirthday = TrimString(gteBirthday)
+	return srv
+}
+
+// SetLteBirthday sets the specified argument to ActressService.LteBirthday.
+//  format YYYYMMDD
+//  e.g. 20171231
+//
+// SetLteBirthdayはBirthdayパラメータに女優の誕生日の終了値を設定します。
+func (srv *ActressService) SetLteBirthday(lteBirthday string) *ActressService {
+	srv.LteBirthday = TrimString(lteBirthday)
+	return srv
+}
+
 // SetBust sets the specified argument (numeric format string) to ActressService.Bust. unit: centimeter.
 //
 // SetBustはBustパラメータに女優のバストサイズを設定します。
 func (srv *ActressService) SetBust(bust string) *ActressService {
 	srv.Bust = TrimString(bust)
+	return srv
+}
+
+// SetGteBust sets the specified argument (numeric format string) to ActressService.GteBust. unit: centimeter.
+//
+// SetGteBustはBustパラメータに女優のバストサイズの最小値を設定します。
+func (srv *ActressService) SetGteBust(gteBust string) *ActressService {
+	srv.GteBust = TrimString(gteBust)
+	return srv
+}
+
+// SetLteBust sets the specified argument (numeric format string) to ActressService.Bust. unit: centimeter.
+//
+// SetLteBustはBustパラメータに女優のバストサイズの最小値を設定します。
+func (srv *ActressService) SetLteBust(lteBust string) *ActressService {
+	srv.LteBust = TrimString(lteBust)
 	return srv
 }
 
@@ -191,6 +258,22 @@ func (srv *ActressService) SetWaist(waist string) *ActressService {
 	return srv
 }
 
+// SetGteWaist sets the specified argument (numeric format string) to ActressService.GteWaist. unit: centimeter.
+//
+// SetGteWaistはBirthdayパラメータに女優のウエストサイズ最小値を設定します。
+func (srv *ActressService) SetGteWaist(gteWaist string) *ActressService {
+	srv.GteWaist = TrimString(gteWaist)
+	return srv
+}
+
+// SetLteWaist sets the specified argument (numeric format string) to ActressService.LteWaist. unit: centimeter.
+//
+// SetLteWaistはBirthdayパラメータに女優のウエストサイズ最大値を設定します。
+func (srv *ActressService) SetLteWaist(lteWaist string) *ActressService {
+	srv.LteWaist = TrimString(lteWaist)
+	return srv
+}
+
 // SetHip sets the specified argument (numeric format string) to ActressService.Hip. unit: centimeter.
 //
 // SetHipはBirthdayパラメータに女優のヒップサイズを設定します。
@@ -199,11 +282,43 @@ func (srv *ActressService) SetHip(hip string) *ActressService {
 	return srv
 }
 
+// SetGteHip sets the specified argument (numeric format string) to ActressService.GteHip. unit: centimeter.
+//
+// SetGteHipはBirthdayパラメータに女優のヒップサイズを設定します。
+func (srv *ActressService) SetGteHip(gteHip string) *ActressService {
+	srv.GteHip = TrimString(gteHip)
+	return srv
+}
+
+// SetLteHip sets the specified argument (numeric format string) to ActressService.LteHip. unit: centimeter.
+//
+// SetLteHipはBirthdayパラメータに女優のヒップサイズを設定します。
+func (srv *ActressService) SetLteHip(lteHip string) *ActressService {
+	srv.LteHip = TrimString(lteHip)
+	return srv
+}
+
 // SetHeight sets the specified argument (numeric format string) to ActressService.Height. unit: centimeter.
 //
 // SetHeightはBirthdayパラメータに女優の身長を設定します。
 func (srv *ActressService) SetHeight(height string) *ActressService {
 	srv.Height = TrimString(height)
+	return srv
+}
+
+// SetGteHeight sets the specified argument (numeric format string) to ActressService.GteHeight. unit: centimeter.
+//
+// SetGteHeightはBirthdayパラメータに女優の身長を設定します。
+func (srv *ActressService) SetGteHeight(gteHeight string) *ActressService {
+	srv.GteHeight = TrimString(gteHeight)
+	return srv
+}
+
+// SetLteHeight sets the specified argument (numeric format string) to ActressService.Height. unit: centimeter.
+//
+// SetLteHeightはBirthdayパラメータに女優の身長を設定します。
+func (srv *ActressService) SetLteHeight(lteHeight string) *ActressService {
+	srv.LteHeight = TrimString(lteHeight)
 	return srv
 }
 
@@ -265,17 +380,47 @@ func (srv *ActressService) BuildRequestURL() (string, error) {
 	if srv.Birthday != "" {
 		queries.Set("birthday", srv.Birthday)
 	}
+	if srv.GteBirthday != "" {
+		queries.Set("gte_birthday", srv.GteBirthday)
+	}
+	if srv.LteBirthday != "" {
+		queries.Set("lte_birthday", srv.LteBirthday)
+	}
 	if srv.Bust != "" {
 		queries.Set("bust", srv.Bust)
+	}
+	if srv.GteBust != "" {
+		queries.Set("gte_bust", srv.GteBust)
+	}
+	if srv.LteBust != "" {
+		queries.Set("lte_bust", srv.LteBust)
 	}
 	if srv.Waist != "" {
 		queries.Set("waist", srv.Waist)
 	}
+	if srv.GteWaist != "" {
+		queries.Set("gte_waist", srv.GteWaist)
+	}
+	if srv.LteWaist != "" {
+		queries.Set("lte_waist", srv.LteWaist)
+	}
 	if srv.Hip != "" {
 		queries.Set("hip", srv.Hip)
 	}
+	if srv.GteHip != "" {
+		queries.Set("gte_hip", srv.GteHip)
+	}
+	if srv.LteHip != "" {
+		queries.Set("lte_hip", srv.LteHip)
+	}
 	if srv.Height != "" {
 		queries.Set("height", srv.Height)
+	}
+	if srv.GteHeight != "" {
+		queries.Set("gte_height", srv.GteHeight)
+	}
+	if srv.LteHeight != "" {
+		queries.Set("lte_height", srv.LteHeight)
 	}
 
 	return APIBaseURL + "/ActressSearch?" + queries.Encode(), nil

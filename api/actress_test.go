@@ -356,6 +356,28 @@ func TestBuildRequestURLInActressService(t *testing.T) {
 	}
 	srv.SetBirthday("")
 
+	srv.SetGteBirthday("19800201")
+	expected = expectedBase + "&gte_birthday=19800201"
+	u, err = srv.BuildRequestURL()
+	if u != expected {
+		t.Fatalf("ActressService.BuildRequestURL is expected to equal the expected value.\nexpected:%s\nactual:  %s", expected, u)
+	}
+	if err != nil {
+		t.Fatalf("ActressService.BuildRequestURL is not expected to have error")
+	}
+	srv.SetGteBirthday("")
+
+	srv.SetLteBirthday("19940710")
+	expected = expectedBase + "&lte_birthday=19940710"
+	u, err = srv.BuildRequestURL()
+	if u != expected {
+		t.Fatalf("ActressService.BuildRequestURL is expected to equal the expected value.\nexpected:%s\nactual:  %s", expected, u)
+	}
+	if err != nil {
+		t.Fatalf("ActressService.BuildRequestURL is not expected to have error")
+	}
+	srv.SetLteBirthday("")
+
 	srv.SetBust("84")
 	expected = expectedBase + "&bust=84"
 	u, err = srv.BuildRequestURL()
@@ -366,6 +388,28 @@ func TestBuildRequestURLInActressService(t *testing.T) {
 		t.Fatalf("ActressService.BuildRequestURL is not expected to have error")
 	}
 	srv.SetBust("")
+
+	srv.SetGteBust("1")
+	expected = expectedBase + "&gte_bust=1"
+	u, err = srv.BuildRequestURL()
+	if u != expected {
+		t.Fatalf("ActressService.BuildRequestURL is expected to equal the expected value.\nexpected:%s\nactual:  %s", expected, u)
+	}
+	if err != nil {
+		t.Fatalf("ActressService.BuildRequestURL is not expected to have error")
+	}
+	srv.SetGteBust("")
+
+	srv.SetLteBust("100")
+	expected = expectedBase + "&lte_bust=100"
+	u, err = srv.BuildRequestURL()
+	if u != expected {
+		t.Fatalf("ActressService.BuildRequestURL is expected to equal the expected value.\nexpected:%s\nactual:  %s", expected, u)
+	}
+	if err != nil {
+		t.Fatalf("ActressService.BuildRequestURL is not expected to have error")
+	}
+	srv.SetLteBust("")
 
 	srv.SetWaist("57")
 	expected = expectedBase + "&waist=57"
@@ -378,6 +422,28 @@ func TestBuildRequestURLInActressService(t *testing.T) {
 	}
 	srv.SetWaist("")
 
+	srv.SetGteWaist("51")
+	expected = expectedBase + "&gte_waist=51"
+	u, err = srv.BuildRequestURL()
+	if u != expected {
+		t.Fatalf("ActressService.BuildRequestURL is expected to equal the expected value.\nexpected:%s\nactual:  %s", expected, u)
+	}
+	if err != nil {
+		t.Fatalf("ActressService.BuildRequestURL is not expected to have error")
+	}
+	srv.SetGteWaist("")
+
+	srv.SetLteWaist("60")
+	expected = expectedBase + "&lte_waist=60"
+	u, err = srv.BuildRequestURL()
+	if u != expected {
+		t.Fatalf("ActressService.BuildRequestURL is expected to equal the expected value.\nexpected:%s\nactual:  %s", expected, u)
+	}
+	if err != nil {
+		t.Fatalf("ActressService.BuildRequestURL is not expected to have error")
+	}
+	srv.SetLteWaist("")
+
 	srv.SetHip("82")
 	expected = expectedBase + "&hip=82"
 	u, err = srv.BuildRequestURL()
@@ -389,6 +455,28 @@ func TestBuildRequestURLInActressService(t *testing.T) {
 	}
 	srv.SetHip("")
 
+	srv.SetGteHip("80")
+	expected = expectedBase + "&gte_hip=80"
+	u, err = srv.BuildRequestURL()
+	if u != expected {
+		t.Fatalf("ActressService.BuildRequestURL is expected to equal the expected value.\nexpected:%s\nactual:  %s", expected, u)
+	}
+	if err != nil {
+		t.Fatalf("ActressService.BuildRequestURL is not expected to have error")
+	}
+	srv.SetGteHip("")
+
+	srv.SetLteHip("90")
+	expected = expectedBase + "&lte_hip=90"
+	u, err = srv.BuildRequestURL()
+	if u != expected {
+		t.Fatalf("ActressService.BuildRequestURL is expected to equal the expected value.\nexpected:%s\nactual:  %s", expected, u)
+	}
+	if err != nil {
+		t.Fatalf("ActressService.BuildRequestURL is not expected to have error")
+	}
+	srv.SetLteHip("")
+
 	srv.SetHeight("155")
 	expected = expectedBase + "&height=155"
 	u, err = srv.BuildRequestURL()
@@ -398,6 +486,29 @@ func TestBuildRequestURLInActressService(t *testing.T) {
 	if err != nil {
 		t.Fatalf("ActressService.BuildRequestURL is not expected to have error")
 	}
+	srv.SetHeight("")
+
+	srv.SetGteHeight("150")
+	expected = expectedBase + "&gte_height=150"
+	u, err = srv.BuildRequestURL()
+	if u != expected {
+		t.Fatalf("ActressService.BuildRequestURL is expected to equal the expected value.\nexpected:%s\nactual:  %s", expected, u)
+	}
+	if err != nil {
+		t.Fatalf("ActressService.BuildRequestURL is not expected to have error")
+	}
+	srv.SetGteHeight("")
+
+	srv.SetLteHeight("160")
+	expected = expectedBase + "&lte_height=160"
+	u, err = srv.BuildRequestURL()
+	if u != expected {
+		t.Fatalf("ActressService.BuildRequestURL is expected to equal the expected value.\nexpected:%s\nactual:  %s", expected, u)
+	}
+	if err != nil {
+		t.Fatalf("ActressService.BuildRequestURL is not expected to have error")
+	}
+	srv.SetLteHeight("")
 }
 
 func TestBuildRequestURLWithoutApiIDInActressService(t *testing.T) {
@@ -433,10 +544,20 @@ func TestExcuteWeakRequestActressAPIToServer(t *testing.T) {
 	srv.SetInitial("あ")
 	srv.SetKeyword("あさみ")
 	srv.SetBust("90")
+	srv.SetGteBust("90")
+	srv.SetLteBust("99")
 	srv.SetWaist("-60")
+	srv.SetGteWaist("50")
+	srv.SetLteWaist("60")
 	srv.SetHip("85-90")
+	srv.SetGteHip("85")
+	srv.SetLteHip("90")
 	srv.SetHeight("160")
+	srv.SetGteHeight("160")
+	srv.SetLteHeight("169")
 	srv.SetBirthday("19900101")
+	srv.SetGteBirthday("19900101")
+	srv.SetLteBirthday("20101231")
 	srv.SetSort("-name")
 	srv.SetLength(20)
 	srv.SetOffset(1)

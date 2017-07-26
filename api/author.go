@@ -2,9 +2,10 @@ package api
 
 import (
 	"fmt"
-	"github.com/mitchellh/mapstructure"
 	"net/url"
 	"strconv"
+
+	"github.com/mitchellh/mapstructure"
 )
 
 type AuthorService struct {
