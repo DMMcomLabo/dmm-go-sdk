@@ -284,7 +284,7 @@ func (srv *ActressService) SetHip(hip string) *ActressService {
 
 // SetGteHip sets the specified argument (numeric format string) to ActressService.GteHip. unit: centimeter.
 //
-// SetGteHipはBirthdayパラメータに女優のヒップサイズの最小値を設定します。
+// SetGteHipはBirthdayパラメータに女優のヒップサイズを設定します。
 func (srv *ActressService) SetGteHip(gteHip string) *ActressService {
 	srv.GteHip = TrimString(gteHip)
 	return srv
@@ -292,7 +292,7 @@ func (srv *ActressService) SetGteHip(gteHip string) *ActressService {
 
 // SetLteHip sets the specified argument (numeric format string) to ActressService.LteHip. unit: centimeter.
 //
-// SetLteHipはBirthdayパラメータに女優のヒップサイズの最大値を設定します。
+// SetLteHipはBirthdayパラメータに女優のヒップサイズを設定します。
 func (srv *ActressService) SetLteHip(lteHip string) *ActressService {
 	srv.LteHip = TrimString(lteHip)
 	return srv
@@ -308,7 +308,7 @@ func (srv *ActressService) SetHeight(height string) *ActressService {
 
 // SetGteHeight sets the specified argument (numeric format string) to ActressService.GteHeight. unit: centimeter.
 //
-// SetGteHeightはBirthdayパラメータに女優の身長の最長値を設定します。
+// SetGteHeightはBirthdayパラメータに女優の身長を設定します。
 func (srv *ActressService) SetGteHeight(gteHeight string) *ActressService {
 	srv.GteHeight = TrimString(gteHeight)
 	return srv
@@ -316,7 +316,7 @@ func (srv *ActressService) SetGteHeight(gteHeight string) *ActressService {
 
 // SetLteHeight sets the specified argument (numeric format string) to ActressService.Height. unit: centimeter.
 //
-// SetLteHeightはBirthdayパラメータに女優の身長の最大値を設定します。
+// SetLteHeightはBirthdayパラメータに女優の身長を設定します。
 func (srv *ActressService) SetLteHeight(lteHeight string) *ActressService {
 	srv.LteHeight = TrimString(lteHeight)
 	return srv
