@@ -83,14 +83,6 @@ func TestValidateSite(t *testing.T) {
 		t.Fatalf("When value is %s, not expected false.", SiteAdult)
 	}
 
-	if !ValidateSite("DMM.com") {
-		t.Fatalf("When value is %s, not expected false.", "DMM.com")
-	}
-
-	if !ValidateSite("DMM.R18") {
-		t.Fatalf("When value is %s, not expected false.", "DMM.R18")
-	}
-
 	if ValidateSite("DMM.co.jp") {
 		t.Fatalf("When value is %s, not expected true.", "DMM.co.jp")
 	}
