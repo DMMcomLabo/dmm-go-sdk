@@ -414,7 +414,7 @@ func TestExcuteRequestProductAPIToServer(t *testing.T) {
 	}
 
 	srv := NewProductService(TestAffiliateID, TestAPIID)
-	srv.SetSite("DMM.R18")
+	srv.SetSite(SiteAdult)
 	srv.SetService("mono")
 	srv.SetFloor("dvd")
 	srv.SetContentID("15dss00145")

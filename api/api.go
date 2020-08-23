@@ -16,7 +16,7 @@ const (
 	APIBaseURL       = "https://api.dmm.com/affiliate/v3"
 	APIVersion       = "3"
 	SiteGeneral      = "DMM.com"
-	SiteAdult        = "DMM.R18"
+	SiteAdult        = "FANZA"
 	DefaultAPIOffset = 1
 	DefaultAPILength = 100
 	DefaultMaxLength = 500
